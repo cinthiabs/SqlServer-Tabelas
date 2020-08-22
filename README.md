@@ -10,7 +10,8 @@ Repositório com scripts de tabelas no banco de dados SQL SERVER. Exercicios rea
 - DELETE - Comando para apagar dados.
 - SELECT, Where - Consulta de tabelas, registros, colunas.
 - MIN, MAX - Valor minimo e valor máximo.
-- AVG - Média de um conjunto de valores
+- AVG - Média de um conjunto de valores.
+- SUM - Soma de valores.
 - COUNT - Contar a quantidade total de Itens.
 - INNER JOIN - Comando para comparação de valores de colunas e associar tabelas.
 - Group By - Agrupar diversos registros entre colunas.
