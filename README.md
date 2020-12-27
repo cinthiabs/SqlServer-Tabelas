@@ -1,6 +1,6 @@
 # SqlServer-Tabelas
 
-Repositório com scripts de tabelas no banco de dados SQL SERVER. Exercicios realizados ao longo do semestre na faculdade, e estudos através de videos na internet, relacionamentos entre tabelas, modelageem de banco, Chave Primaria, Chave Estrangeira, Operações básicas e consultas.
+Repositório com scripts de tabelas no banco de dados SQL SERVER. Exercicios realizados ao longo do semestre na faculdade, e estudos a parte. Relacionamentos entre tabelas, modelagem de banco, Chave Primaria, Chave Estrangeira, Operações básicas e demais consultas.
 
 # Principais comandos Utilizados: 
  
