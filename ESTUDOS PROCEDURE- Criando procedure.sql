@@ -1,4 +1,4 @@
--- ESTUDOS DE PROCEDURE Criando novos   USANDO A TABELA CLIENTES NO BANCO DE DADOS PEDIDOSDB
+-- ESTUDOS DE PROCEDURE Criando novos USANDO A TABELA CLIENTES NO BANCO DE DADOS PEDIDOSDB
 
 --criando uma Procedure
 CREATE PROCEDURE TESTE
@@ -11,7 +11,7 @@ exec TESTE
 --consultar o codigo da procedure 
 sp_helptext TESTE
 
---para modificar a procedure  deve inserir a instrução  ALTER PROCEDURE (nome) e o codigo
+--para modificar a procedure  deve inserir a instruÃ§Ã£o  ALTER PROCEDURE (nome) e o codigo
 --USANDO A TABELA CLIENTES NO BANCO DE DADOS PEDIDOSDB
 ALTER PROCEDURE TESTE
 
