@@ -12,7 +12,7 @@ Nome varchar(30),
 data datetime,
 );
 
-create table serviço
+create table serviÃ§o
 (codserv int identity primary key,
 servico varchar(80), 
 descricao varchar(80), 
@@ -28,5 +28,6 @@ codaten int,
 codservico int,
 constraint FK_codcliente foreign key(codcliente) references cliente(codCliente),
 constraint FK_codaten foreign key(codaten) references atendente(codAten),
-constraint FK_codservico foreign key(codservico) references serviço(codserv),
+constraint FK_codservico foreign key(codservico) references serviÃ§o(codserv),
 );
+
