@@ -61,7 +61,7 @@ select * from tbl_livro order by Nome_Livro desc -- ordem descendente
 
 select Nome_Autor,Sobrenome_Autor from tbl_autores order by Nome_Autor
 
--- DISTINCT - não exibe valores duplicados 
+-- DISTINCT - nÃ£o exibe valores duplicados 
 select distinct ID_Autor from tbl_Livro
 
 -- Where  Permite filtrar registros em uma consulta
@@ -109,10 +109,10 @@ from tbl_livro
 select * from tbl_livro_backup
 
 
--- Funções agregadas
+-- FunÃ§Ãµes agregadas
 
-select max(Preco_livro) as 'Maior número' from tbl_livro 
-select min(preco_livro) as 'Menor número' from tbl_livro
+select max(Preco_livro) as 'Maior nÃºmero' from tbl_livro 
+select min(preco_livro) as 'Menor nÃºmero' from tbl_livro
 select avg(preco_livro) as 'Media' from tbl_livro 
 select sum(preco_livro) as 'Soma' from tbl_livro
 
@@ -125,5 +125,50 @@ select id_livro,nome_livro,Preco_Livro from tbl_Livro where preco_livro between 
 select nome_livro from tbl_Livro where Nome_Livro like 's%' -- busca o caracter que inicia com S
 select nome_livro from tbl_Livro where Nome_Livro like '%a' -- busca o caracter que termina com g
 select nome_livro from tbl_Livro where Nome_Livro like '_i%' -- busca a segunda letra 
-select nome_livro from tbl_Livro where Nome_Livro like '[SL]%' --começa com as letras que estáo dentro []
-select nome_livro from tbl_Livro where Nome_Livro like '%[gl]' --termina com as letras que estáo dentro []
+select nome_livro from tbl_Livro where Nome_Livro like '[SL]%' --comeÃ§a com as letras que estÃ¡o dentro []
+select nome_livro from tbl_Livro where Nome_Livro like '%[gl]' --termina com as letras que estÃ¡o dentro []
+                         
+--estudos de CASE e else 
+select *,
+case when preco_livro >65 
+	then 'Maior' 
+	else 'menor'
+end as verificar 
+from tbl_Livro
+
+select *, 
+case when data_pub <='20001205'
+	then 'Livro antigo'
+	else 'Livro novo'
+end as Qualidade
+from tbl_Livro
+
+--inner join 
+
+select * from tbl_livro 
+inner join tbl_autores
+on tbl_livro.ID_Livro = tbl_autores.ID_Autor
+
+select l.nome_livro, e.nome_editora
+from tbl_Livro as l 
+inner join tbl_editoras as e
+on e.id_editora=l.id_livro
+
+-- left join 
+select * from tbl_autores
+left join tbl_livro
+on tbl_livro.id_autor=tbl_autores.id_autor
+
+-- tras todos os registros da tabela livro mesmo que nÃ£o haja correspondencia(relacao) com a tabela autores
+
+--right join 
+select * from tbl_autores 
+right join tbl_livro
+on tbl_livro.id_autor = tbl_autores.id_autor
+where tbl_autores.id_autor is null
+
+-- full join 
+select li.nome_livro, li.id_autor, ao.nome_autor
+from tbl_livro as li
+full join tbl_autores as ao
+on li.id_autor=ao.ID_Autor
