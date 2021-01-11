@@ -172,3 +172,49 @@ select li.nome_livro, li.id_autor, ao.nome_autor
 from tbl_livro as li
 full join tbl_autores as ao
 on li.id_autor=ao.ID_Autor
+
+-- in  filtro com listas 
+select * from tbl_Livro
+where id_autor in(1,2,3)
+
+-- in com not valores que não estão entre os numeros especificados. 
+select * from tbl_livro
+where ID_Autor not in (2,3)
+
+-- campo calculado 
+
+create table Produtos (codProduto smallint,
+NomeProduto varchar(20),
+Preco money,
+Quant smallint,
+Total as(Preco * Quant)--campo calculado
+)
+
+insert into Produtos values (1,'Mouse',15.00,2)
+insert into Produtos values (2,'Teclado',18.00,1)
+insert into Produtos values (3,'Mouse',15.00,2)
+insert into Produtos values (4,'Pendrive',25.00,3)
+insert into Produtos values (5,'SD card',29.00,2)
+insert into Produtos values (6,'DVD',1.30,12)
+
+select * from Produtos
+
+-- criando regras 
+create rule rl_preco as @valor > 10.00
+
+execute sp_bindrule rl_preco, 'tbl_livro.Preco_livro' -- vincula com a tabela/ coluna 
+
+select * from tbl_livro
+update tbl_livro set preco_livro= 9.90 where ID_Livro=101
+
+--backup  do banco de dados 
+backup database CursoSQL
+to disk ='C:\Users\Desktop\Estudos\CursoSQL.bak';
+go 
+
+
+--concatenação 
+select 'cinthia' + ' Barbosa' as concatenação
+
+select nome_autor +' '+ sobrenome_autor  as  'Nome completo'from tbl_autores
+
