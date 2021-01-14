@@ -218,3 +218,50 @@ select 'cinthia' + ' Barbosa' as concatenação
 
 select nome_autor +' '+ sobrenome_autor  as  'Nome completo'from tbl_autores
 
+
+-- criando procedure alterar, excluir, inserir
+alter procedure sp_MasterLivro
+@Acao int ,
+@id_autor int = null, -- valor padrão
+@Nome_Autor varchar (50) = null,
+@Sobrenome_Autor varchar (60) = null
+AS
+Begin 
+	if(@Acao = 0) --excluir 
+	Begin
+		delete from tbl_autores
+		where ID_Autor=@id_autor 
+
+		select @id_autor as Retorno -- adicionando mensagem de retorno
+	end 
+	
+	else if(@Acao = 1) -- inserir
+	begin 
+		insert into tbl_autores(Nome_Autor,Sobrenome_Autor)
+		values(@Nome_Autor,@Sobrenome_Autor)
+
+		select @@IDENTITY as Retorno
+	end
+
+	else if(@Acao = 2) -- alterar
+	begin 
+		update tbl_autores
+		set Nome_Autor = @Nome_Autor,Sobrenome_Autor=@Sobrenome_Autor
+		where ID_Autor = @id_autor
+
+		select @id_autor as Retorno -- adicionando mensagem de retorno
+	end
+	
+	else
+	begin
+		RAISERROR('Ação não implementada',14,1);-- aparece a mensagem de erro 
+	end
+
+end
+
+select * from tbl_autores
+
+exec sp_MasterLivro 1, null,'Cinthia','Barbosa'
+exec sp_MasterLivro 2, 6,'Cinthia','Barbosa'
+exec sp_MasterLivro 0,5,'Cinthia','Barbosa'
+
